@@ -68,15 +68,30 @@ let vehicles = [
    ];
 
    // Which vehicles are RED?
-   let red = vehicles.filter(vehicle => vehicle.color.includes("RED"));
-   red.forEach(carNames => { 
-    console.log("red vehicles " + carNames.type);
-})
+   let redCars = vehicles.filter(vehicle => vehicle.color == "Red");
+   redCars.forEach(car => { 
+    console.log(car.type);
+   });
+   console.log("------------------------------------------------");
 
    // Which vehicles have registrations that are expired?
+   const today = new Date();
+   let expired = vehicles.filter(vehicle => vehicle.registrationExpires < today);
+let carTypes = expired.map(vehicle => vehicle.type).join("\n");
+console.log(carTypes);
 
+console.log("------------------------------------------------");
 
    // Which vehicles that hold at least 6 people?
-
+   let fivePlus = vehicles.filter(vehicle => vehicle.capacity >= 6);
+   let peopleInCar = fivePlus.map(vehicle => vehicle.type).join("\n");
+   console.log(peopleInCar);
+   
+      console.log("------------------------------------------------");
+   
 
    // Which vehicles have license plates that end with "222"?
+   let plate = vehicles.filter(vehicle => vehicle.licenseNo.endsWith("222"));
+   let license = plate.map(vehicle => vehicle.type).join("\n");
+    console.log(license);
+
